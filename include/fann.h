@@ -131,13 +131,13 @@ extern "C"
 #endif	/* _MSC_VER */
 /* ----- End of macros used to define DLL external entrypoints ----- */ 
 
-#include "fann_error.h"
-#include "fann_activation.h"
-#include "fann_data.h"
-#include "fann_internal.h"
-#include "fann_train.h"
-#include "fann_cascade.h"
-#include "fann_io.h"
+/* #include "fann_error.h" */
+/* #include "fann_activation.h" */
+/* #include "fann_data.h" */
+/* #include "fann_internal.h" */
+/* #include "fann_train.h" */
+/* #include "fann_cascade.h" */
+/* #include "fann_io.h" */
 
 /* Function: fann_create_standard
 	
@@ -167,7 +167,8 @@ extern "C"
 		
 	This function appears in FANN >= 2.0.0.
 */ 
-FANN_EXTERNAL struct fann *FANN_API fann_create_standard(unsigned int num_layers, ...);
+// varargs not supported
+// FANN_EXTERNAL struct fann *FANN_API fann_create_standard(unsigned int num_layers, ...);
 
 /* Function: fann_create_standard_array
    Just like <fann_create_standard>, but with an array of layer sizes
@@ -208,8 +209,10 @@ FANN_EXTERNAL struct fann *FANN_API fann_create_standard_array(unsigned int num_
 
 	This function appears in FANN >= 2.0.0.
 */
-FANN_EXTERNAL struct fann *FANN_API fann_create_sparse(float connection_rate, 
-	                                                   unsigned int num_layers, ...);
+
+//varargs not supported
+//FANN_EXTERNAL struct fann *FANN_API fann_create_sparse(float connection_rate, 
+//	                                                   unsigned int num_layers, ...);
 
 
 /* Function: fann_create_sparse_array
@@ -243,7 +246,8 @@ FANN_EXTERNAL struct fann *FANN_API fann_create_sparse_array(float connection_ra
 
 	This function appears in FANN >= 2.0.0.
 */ 
-FANN_EXTERNAL struct fann *FANN_API fann_create_shortcut(unsigned int num_layers, ...);
+//varargs not supported
+// FANN_EXTERNAL struct fann *FANN_API fann_create_shortcut(unsigned int num_layers, ...);
 
 /* Function: fann_create_shortcut_array
    Just like <fann_create_shortcut>, but with an array of layer sizes
