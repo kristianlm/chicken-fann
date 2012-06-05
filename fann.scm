@@ -43,9 +43,7 @@
 
 (define (fann:create-standard . layer-sizes)
  (fann:create-standard-array (length layer-sizes)
-                             (location
-                              (u32vector->blob
-                               (list->u32vector layer-sizes)))))
+                             (list->u32vector layer-sizes)))
 
 ;; some convenience conversions for arguments and return
 (let-syntax ([redefine (lambda (x r t)

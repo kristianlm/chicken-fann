@@ -185,8 +185,9 @@ extern "C"
 
 	This function appears in FANN >= 2.0.0.
 */ 
-FANN_EXTERNAL struct fann *FANN_API fann_create_standard_array(unsigned int num_layers,
-													           const unsigned int *layers);
+// removed const (doesn't parse to u32vector like it should with
+// const)
+FANN_EXTERNAL struct fann *FANN_API fann_create_standard_array(unsigned int num_layers, unsigned int *layers);
 
 /* Function: fann_create_sparse
 
@@ -226,9 +227,11 @@ FANN_EXTERNAL struct fann *FANN_API fann_create_standard_array(unsigned int num_
 
 	This function appears in FANN >= 2.0.0.
 */
+
+// removed const (same reason)
 FANN_EXTERNAL struct fann *FANN_API fann_create_sparse_array(float connection_rate, 
-	                                                         unsigned int num_layers, 
-															 const unsigned int *layers);
+                                                             unsigned int num_layers, 
+                                                             unsigned int *layers);
 
 /* Function: fann_create_shortcut
 
@@ -260,8 +263,8 @@ FANN_EXTERNAL struct fann *FANN_API fann_create_sparse_array(float connection_ra
 
 	This function appears in FANN >= 2.0.0.
 */
-FANN_EXTERNAL struct fann *FANN_API fann_create_shortcut_array(unsigned int num_layers,
-															   const unsigned int *layers);
+//removed const
+FANN_EXTERNAL struct fann *FANN_API fann_create_shortcut_array(unsigned int num_layers, unsigned int *layers);
 /* Function: fann_destroy
    Destroys the entire network and properly freeing all the associated memmory.
 
