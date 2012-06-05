@@ -131,13 +131,13 @@ extern "C"
 #endif	/* _MSC_VER */
 /* ----- End of macros used to define DLL external entrypoints ----- */ 
 
-/* #include "fann_error.h" */
+#include "fann_error.h" 
 /* #include "fann_activation.h" */
-/* #include "fann_data.h" */
-/* #include "fann_internal.h" */
-/* #include "fann_train.h" */
+ #include "fann_data.h"
+/* #include "fann_internal.h"  */
+#include "fann_train.h"
 /* #include "fann_cascade.h" */
-/* #include "fann_io.h" */
+#include "fann_io.h"
 
 /* Function: fann_create_standard
 	

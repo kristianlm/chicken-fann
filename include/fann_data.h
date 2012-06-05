@@ -20,7 +20,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #ifndef __fann_data_h__
 #define __fann_data_h__
 
-#include <stdio.h>
+// don't bind against stdio!
+//#include <stdio.h>
 
 /* Section: FANN Datatypes
 
@@ -92,13 +93,15 @@ enum fann_train_enum
    See Also:
       <fann_train_enum>
 */
-static char const *const FANN_TRAIN_NAMES[] = {
-	"FANN_TRAIN_INCREMENTAL",
-	"FANN_TRAIN_BATCH",
-	"FANN_TRAIN_RPROP",
-	"FANN_TRAIN_QUICKPROP",
-	"FANN_TRAIN_SARPROP"
-};
+
+// parsing error. TODO: convert to convenient scheme equivalent
+/* static char const *const FANN_TRAIN_NAMES[] = { */
+/* 	"FANN_TRAIN_INCREMENTAL", */
+/* 	"FANN_TRAIN_BATCH", */
+/* 	"FANN_TRAIN_RPROP", */
+/* 	"FANN_TRAIN_QUICKPROP", */
+/* 	"FANN_TRAIN_SARPROP" */
+/* }; */
 
 /* Enums: fann_activationfunc_enum
    
@@ -238,28 +241,29 @@ enum fann_activationfunc_enum
    See Also:
       <fann_activationfunc_enum>
 */
-static char const *const FANN_ACTIVATIONFUNC_NAMES[] = {
-	"FANN_LINEAR",
-	"FANN_THRESHOLD",
-	"FANN_THRESHOLD_SYMMETRIC",
-	"FANN_SIGMOID",
-	"FANN_SIGMOID_STEPWISE",
-	"FANN_SIGMOID_SYMMETRIC",
-	"FANN_SIGMOID_SYMMETRIC_STEPWISE",
-	"FANN_GAUSSIAN",
-	"FANN_GAUSSIAN_SYMMETRIC",
-	"FANN_GAUSSIAN_STEPWISE",
-	"FANN_ELLIOT",
-	"FANN_ELLIOT_SYMMETRIC",
-	"FANN_LINEAR_PIECE",
-	"FANN_LINEAR_PIECE_SYMMETRIC",
-	"FANN_SIN_SYMMETRIC",
-	"FANN_COS_SYMMETRIC",
-	"FANN_SIN",
-	"FANN_COS"
-};
+// parsing error. TODO: convert to convenient scheme equivalent
+/* static char const *const FANN_ACTIVATIONFUNC_NAMES[] = { */
+/* 	"FANN_LINEAR", */
+/* 	"FANN_THRESHOLD", */
+/* 	"FANN_THRESHOLD_SYMMETRIC", */
+/* 	"FANN_SIGMOID", */
+/* 	"FANN_SIGMOID_STEPWISE", */
+/* 	"FANN_SIGMOID_SYMMETRIC", */
+/* 	"FANN_SIGMOID_SYMMETRIC_STEPWISE", */
+/* 	"FANN_GAUSSIAN", */
+/* 	"FANN_GAUSSIAN_SYMMETRIC", */
+/* 	"FANN_GAUSSIAN_STEPWISE", */
+/* 	"FANN_ELLIOT", */
+/* 	"FANN_ELLIOT_SYMMETRIC", */
+/* 	"FANN_LINEAR_PIECE", */
+/* 	"FANN_LINEAR_PIECE_SYMMETRIC", */
+/* 	"FANN_SIN_SYMMETRIC", */
+/* 	"FANN_COS_SYMMETRIC", */
+/* 	"FANN_SIN", */
+/* 	"FANN_COS" */
+/* }; */
 
-/* Enum: fann_errorfunc_enum
+/* enum: fann_errorfunc_enum
 	Error function used during training.
 	
 	FANN_ERRORFUNC_LINEAR - Standard linear error function.
@@ -288,10 +292,11 @@ enum fann_errorfunc_enum
    See Also:
       <fann_errorfunc_enum>
 */
-static char const *const FANN_ERRORFUNC_NAMES[] = {
-	"FANN_ERRORFUNC_LINEAR",
-	"FANN_ERRORFUNC_TANH"
-};
+// parsing error. TODO: convert to convenient scheme equivalent
+/* static char const *const FANN_ERRORFUNC_NAMES[] = { */
+/* 	"FANN_ERRORFUNC_LINEAR", */
+/* 	"FANN_ERRORFUNC_TANH" */
+/* }; */
 
 /* Enum: fann_stopfunc_enum
 	Stop criteria used during training.
@@ -323,10 +328,11 @@ enum fann_stopfunc_enum
    See Also:
       <fann_stopfunc_enum>
 */
-static char const *const FANN_STOPFUNC_NAMES[] = {
-	"FANN_STOPFUNC_MSE",
-	"FANN_STOPFUNC_BIT"
-};
+// parsing error. TODO: convert to convenient scheme equivalent
+/* static char const *const FANN_STOPFUNC_NAMES[] = { */
+/* 	"FANN_STOPFUNC_MSE", */
+/* 	"FANN_STOPFUNC_BIT" */
+/* }; */
 
 /* Enum: fann_network_type_enum
 
@@ -359,10 +365,11 @@ enum fann_nettype_enum
 
    This constant appears in FANN >= 2.1.0
 */
-static char const *const FANN_NETTYPE_NAMES[] = {
-	"FANN_NETTYPE_LAYER",
-	"FANN_NETTYPE_SHORTCUT"
-};
+// parsing error. TODO: convert to convenient scheme equivalent
+/* static char const *const FANN_NETTYPE_NAMES[] = { */
+/* 	"FANN_NETTYPE_LAYER", */
+/* 	"FANN_NETTYPE_SHORTCUT" */
+/* }; */
 
 
 /* forward declarations for use with the callback */
@@ -423,11 +430,12 @@ struct fann_neuron
 	fann_type activation_steepness;
 	/* Used to choose which activation function to use */
 	enum fann_activationfunc_enum activation_function;
-#ifdef __GNUC__
-} __attribute__ ((packed));
-#else
+  //parsing problems with bind:
+/* #ifdef __GNUC__ */
+/* } __attribute__ ((packed)); */
+/* #else */
 };
-#endif
+//#endif
 
 /* A single layer in the neural network.
  */
@@ -539,28 +547,30 @@ struct fann
 	 */
 	enum fann_train_enum training_algorithm;
 
-#ifdef FIXEDFANN
-	/* the decimal_point, used for shifting the fix point
-	 * in fixed point integer operatons.
-	 */
-	unsigned int decimal_point;
+  // parsing error: chicken-bind didn't like pp-ifdef inside struct
+  // warning: this disables possibility to bind with fixed-points
+/* #ifdef FIXEDFANN */
+/* 	/\* the decimal_point, used for shifting the fix point */
+/* 	 * in fixed point integer operatons. */
+/* 	 *\/ */
+/* 	unsigned int decimal_point; */
 
-	/* the multiplier, used for multiplying the fix point
-	 * in fixed point integer operatons.
-	 * Only used in special cases, since the decimal_point is much faster.
-	 */
-	unsigned int multiplier;
+/* 	/\* the multiplier, used for multiplying the fix point */
+/* 	 * in fixed point integer operatons. */
+/* 	 * Only used in special cases, since the decimal_point is much faster. */
+/* 	 *\/ */
+/* 	unsigned int multiplier; */
 
-	/* When in choosen (or in fixed point), the sigmoid function is
-	 * calculated as a stepwise linear function. In the
-	 * activation_results array, the result is saved, and in the
-	 * two values arrays, the values that gives the results are saved.
-	 */
-	fann_type sigmoid_results[6];
-	fann_type sigmoid_values[6];
-	fann_type sigmoid_symmetric_results[6];
-	fann_type sigmoid_symmetric_values[6];
-#endif
+/* 	/\* When in choosen (or in fixed point), the sigmoid function is */
+/* 	 * calculated as a stepwise linear function. In the */
+/* 	 * activation_results array, the result is saved, and in the */
+/* 	 * two values arrays, the values that gives the results are saved. */
+/* 	 *\/ */
+/* 	fann_type sigmoid_results[6]; */
+/* 	fann_type sigmoid_values[6]; */
+/* 	fann_type sigmoid_symmetric_results[6]; */
+/* 	fann_type sigmoid_symmetric_values[6]; */
+/* #endif */
 
 	/* Total number of connections.
 	 * very usefull, because the actual connections
@@ -763,7 +773,8 @@ struct fann
 	 */
 	fann_type *prev_weights_deltas;
 	
-#ifndef FIXEDFANN
+  // we only support floatfann, see above
+  //#ifndef FIXEDFANN
 	/* Arithmetic mean used to remove steady component in input data.  */
 	float *scale_mean_in;
 
@@ -795,7 +806,8 @@ struct fann
 	 * Resulting data values may be greater than user-defined maximum. 
 	 */
 	float *scale_factor_out;
-#endif
+  //floatfann 
+  //#endif
 };
 
 /* Type: fann_connection
