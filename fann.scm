@@ -32,7 +32,7 @@
     (move-memory! pointer b bytes)
     b))
 
-
+;; convert a (c-pointer fann_type) to a list (only f32vector for now)
 (define (pointer->list ann pointer)
   (fvector->list
    (blob->fvector/shared
