@@ -33,12 +33,11 @@
     b))
 
 ;; convert a (c-pointer fann_type) to a list (only f32vector for now)
-(define (pointer->list ann pointer)
+(define (pointer->list pointer len)
   (fvector->list
    (blob->fvector/shared
     (pointer->blob pointer
-                   (fx* (foreign-value "sizeof(fann_type)" int)
-                        (fann:get-num-output ann))))))
+                   (fx* len (foreign-value "sizeof(fann_type)" int))))))
 
 
 (define (fann:create-standard . layer-sizes)
@@ -55,10 +54,12 @@
                                   ,@(cddr x))))))])
 
   (redefine (fann:run ann inputs)
-            (pointer->list ann ($ ann (list->fvector inputs))))
+            (pointer->list ($ ann (list->fvector inputs))
+                           (fann:get-num-output ann)))
   
   (redefine (fann:test ann inputs outputs)
-            (pointer->list ann ($ ann (list->fvector inputs) (list->fvector outputs))))
+            (pointer->list ($ ann (list->fvector inputs) (list->fvector outputs))
+                           (fann:get-num-output ann)))
 
   (redefine (fann:train ann inputs outputs)
             ($ ann (list->fvector inputs) (list->fvector outputs))))
