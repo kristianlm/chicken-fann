@@ -136,7 +136,7 @@ extern "C"
  #include "fann_data.h"
 /* #include "fann_internal.h"  */
 #include "fann_train.h"
-/* #include "fann_cascade.h" */
+#include "fann_cascade.h"
 #include "fann_io.h"
 
 /* Function: fann_create_standard
