@@ -21,4 +21,5 @@
 (print input " -> "  (fann:run ann input))
 
 (fann:save ann "/tmp/xor-test.net")
+(fann:destroy-train xor-train)
 (fann:destroy ann)
