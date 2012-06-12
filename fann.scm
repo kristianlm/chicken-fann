@@ -20,12 +20,14 @@
                fvector->list
                list->fvector
                blob->fvector/shared
-               pointer->list))
+               pointer->list
+               *data-tuples*))
 
 ;; make life easier if we want to change precision
 (define fvector->list f32vector->list)
 (define list->fvector list->f32vector)
 (define blob->fvector/shared blob->f32vector/shared)
+(define fvector->blob/shared f32vector->blob/shared)
 
 (define (pointer->blob pointer bytes)
   (let ([b (make-blob bytes)])
@@ -78,10 +80,10 @@
   (define in-list (car (list-ref *data-tuples* idx)))
   (define out-list (cadr (list-ref *data-tuples* idx)))
 
-  (move-memory! (f32vector->blob/shared (list->f32vector in-list))
+  (move-memory! (fvector->blob/shared (list->fvector in-list))
                 vinput
                 (fx* num_inputs (foreign-value "sizeof(fann_type)" int)))
-  (move-memory! (f32vector->blob/shared (list->f32vector out-list))
+  (move-memory! (fvector->blob/shared (list->fvector out-list))
                 voutput
                 (fx* num_outputs (foreign-value "sizeof(fann_type)" int))))
 
