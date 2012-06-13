@@ -8,7 +8,7 @@
 #include <fann.h>
 <#
 
-(bind-options default-renaming: "fann:" export-constants: #t)
+(bind-options default-renaming: "" export-constants: #t)
 (bind-rename/pattern "^fann-" "")
 (bind-include-path "./include")
 (bind-file "include/fann.h")
