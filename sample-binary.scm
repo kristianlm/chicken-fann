@@ -1,5 +1,7 @@
-(use fann)
+(use (prefix fann fann:))
 
+
+;; Convert binary numbers (input) to decimal (output)
 (define train-list '(((0 0) (0))
                      ((0 1) (1))
                      ((1 0) (2))
@@ -19,5 +21,5 @@
 (fann:train-on-data ann train-data 1000 1 0.001)
 (fann:test-data ann train-data)
 
-(map (lambda (I) (fann:run ann I))
-     train-input-list)
+(pp (map (lambda (I) (fann:run ann I))
+      train-input-list))
