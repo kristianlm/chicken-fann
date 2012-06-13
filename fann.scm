@@ -13,8 +13,8 @@
 (bind-include-path "./include")
 (bind-file "include/fann.h")
 
-(define fann:sizeof-uint (foreign-value "sizeof(unsigned int)" int))
-(define fann:sizeof-fann-type (foreign-value "sizeof(fann_type)" int))
+(define sizeof-uint (foreign-value "sizeof(unsigned int)" int))
+(define sizeof-fann-type (foreign-value "sizeof(fann_type)" int))
 
 (declare (hide pointer->blob
                fvector->list
@@ -42,8 +42,8 @@
                    (fx* len (foreign-value "sizeof(fann_type)" int))))))
 
 
-(define (fann:create-standard . layer-sizes)
- (fann:create-standard-array (length layer-sizes)
+(define (create-standard . layer-sizes)
+ (create-standard-array (length layer-sizes)
                              (list->u32vector layer-sizes)))
 
 ;; some convenience conversions for arguments and return
@@ -55,15 +55,15 @@
                                 (lambda ,arglist
                                   ,@(cddr x))))))])
 
-  (redefine (fann:run ann inputs)
+  (redefine (run ann inputs)
             (pointer->list ($ ann (list->fvector inputs))
-                           (fann:get-num-output ann)))
+                           (get-num-output ann)))
   
-  (redefine (fann:test ann inputs outputs)
+  (redefine (test ann inputs outputs)
             (pointer->list ($ ann (list->fvector inputs) (list->fvector outputs))
-                           (fann:get-num-output ann)))
+                           (get-num-output ann)))
 
-  (redefine (fann:train ann inputs outputs)
+  (redefine (train ann inputs outputs)
             ($ ann (list->fvector inputs) (list->fvector outputs))))
 
 
@@ -88,7 +88,7 @@
                 (fx* num_outputs (foreign-value "sizeof(fann_type)" int))))
 
 
-(define (fann:read-train-from-list data-tuples)
+(define (read-train-from-list data-tuples)
   (let ([in-len (length (caar data-tuples))]
         [out-len (length (cadar data-tuples))])
     ;; hacky but seems to work. we can't supply tuples in parameter
