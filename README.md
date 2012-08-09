@@ -12,7 +12,7 @@ Returned pointers, such as those from `fann:create-standard` and `fann:read-trai
 need to be freed with their associated destroyers.
 
 ## Example 
-Here's the [original example](http://leenissen.dk/fann/html/files2/gettingstarted-txt.html) convered to scheme:
+Here's the [original example](http://leenissen.dk/fann/html/files2/gettingstarted-txt.html) converted to scheme:
 
 ```scheme
 (use fann)
