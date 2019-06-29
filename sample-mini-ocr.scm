@@ -1,4 +1,4 @@
-(use fann octave)
+(use (prefix fann fann:) octave)
 (octave:start)
 
 ;; eg 4 -> '(0 0 0 0 1 0 0 0 0 0)
