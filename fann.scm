@@ -1,11 +1,16 @@
 
 (module fann *
- (import chicken scheme foreign)
- (import bind)
- (use srfi-4 lolevel)
+  (import scheme
+	  bind
+	  srfi-4
+	  (chicken base)
+	  (chicken blob)
+	  (chicken fixnum)
+	  (chicken memory)
+	  (chicken foreign))
 
 #>
-#include <fann.h>
+#include "./include/fann.h"
 <#
 
 (bind-options default-renaming: "" export-constants: #t)
@@ -47,13 +52,14 @@
                              (list->u32vector layer-sizes)))
 
 ;; some convenience conversions for arguments and return
-(let-syntax ([redefine (lambda (x r t)
-                         (let ([func (caadr x)]
-                               [arglist (cdadr x)])
-                           `(set! ,func
-                              (let ([$ ,func])
-                                (lambda ,arglist
-                                  ,@(cddr x))))))])
+(let-syntax ([redefine (ir-macro-transformer
+			(lambda (x i t)
+			  (let ([func (caadr x)]
+				[arglist (cdadr x)])
+			    `(set! ,func
+			       (let ([,(i '$) ,func])
+				 (lambda ,arglist
+				   ,@(cddr x)))))))])
 
   (redefine (run ann inputs)
             (pointer->list ($ ann (list->fvector inputs))

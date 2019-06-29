@@ -1,7 +1,0 @@
-
-((author "Kristian Lein-Mathisen")
- (synopsis "Chicken bindings for Fast Artificial Neural Network library")
- (needs bind)
- (category math)
- (license "BSD")
- )

@@ -1,6 +1,0 @@
-
-(compile -s fann.scm -lfann -J)
-(compile -s fann.import.scm)
-
-(install-extension 'fann
-                   '("fann.so" "fann.import.so"))
