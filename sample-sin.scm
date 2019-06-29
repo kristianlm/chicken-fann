@@ -1,4 +1,6 @@
-(use fann)
+(import (chicken pretty-print)
+	srfi-1
+	(prefix fann fann:))
 
 (begin
   (define train-list 

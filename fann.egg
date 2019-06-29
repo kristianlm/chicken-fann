@@ -1,0 +1,7 @@
+((synopsis "Chicken bindings for Fast Artificial Neural Network library")
+ (category math)
+ (dependencies bind)
+ (license "BSD")
+ (author "Kristian Lein-Mathisen")
+ (components (extension fann
+			(link-options "-L" "-lfann"))))

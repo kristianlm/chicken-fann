@@ -1,4 +1,4 @@
-(use fann)
+(import (prefix fann fann:))
 
 (define xor-train (fann:read-train-from-list '(((-1 -1) (-1))
                                                ((-1 1) (1))

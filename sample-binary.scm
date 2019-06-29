@@ -1,4 +1,5 @@
-(use (prefix fann fann:))
+(import (chicken pretty-print)
+	(prefix fann fann:))
 
 
 ;; Convert binary numbers (input) to decimal (output)
